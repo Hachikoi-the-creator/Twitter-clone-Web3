@@ -1,0 +1,54 @@
+.siderContent {
+  display: flex;
+  flex-direction: column;
+  height: 77vh;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* twitter logo  */
+.siderContent a:first-child {
+  position: relative;
+  left: -40px;
+  /* padding: 13px; */
+}
+
+.siderContent > * {
+  padding: 7px 0;
+}
+
+/* .sideBar .logout {
+  padding: 10px;
+} */
+
+.details {
+  display: flex;
+  padding: 10px;
+  gap: 14px;
+  justify-content: start;
+  align-items: center;
+}
+
+.menuItems {
+  display: flex;
+  justify-content: start;
+  gap: 14px;
+  margin-top: 20px;
+  align-items: center;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 1000px;
+  color: white !important;
+}
+
+.menuItems:hover {
+  cursor: pointer;
+  background-color: #282828;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
