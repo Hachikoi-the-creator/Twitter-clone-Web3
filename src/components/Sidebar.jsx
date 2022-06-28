@@ -15,7 +15,7 @@ const Sidebar = () => {
     : defaultImgs[0];
 
   const username =
-    user.attributes.username.lenght < 7
+    user.attributes.username.lenght > 9
       ? user.attributes.username.slice(0, 6) + "..."
       : user.attributes.username;
 
