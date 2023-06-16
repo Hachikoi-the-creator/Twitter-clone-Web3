@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int       @id @default(autoincrement())
+  username     String    @unique
+  profile_pic  String
+  web3_address String    @unique
+  followers    Follows[] @relation("following")
+  following    Follows[] @relation("follower")
+  twits        Tweet[]
+}
+
+// explicit intermediate table User => User[]
+model Follows {
+  id           Int  @id @default(autoincrement())
+  follower     User @relation("follower", fields: [follower_id], references: [id])
+  follower_id  Int
+  following    User @relation("following", fields: [following_id], references: [id])
+  following_id Int
+}
+
+model Tweet {
+  id           Int     @id @default(autoincrement())
+  content      String
+  image_url    String
+  is_permanent Boolean @default(false)
+  user_id      Int
+  user         User    @relation(fields: [user_id], references: [id])
+}
