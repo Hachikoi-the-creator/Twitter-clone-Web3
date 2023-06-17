@@ -97,33 +97,7 @@
         "type": "string"
       }
     ],
-    "name": "postHybridTweet",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_imageUrl",
-        "type": "string"
-      }
-    ],
-    "name": "postImageTweet",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_message",
-        "type": "string"
-      }
-    ],
-    "name": "postTextTweet",
+    "name": "postTweet",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

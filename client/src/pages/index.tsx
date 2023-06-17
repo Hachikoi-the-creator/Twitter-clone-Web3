@@ -3,7 +3,7 @@ import TripleLayout from "~/components/TripleLayout";
 import MainSection from "~/components/home/MainSection";
 
 // * place holders
-const className = "bg-red-700 outline outline-1 min-h-[60vh]";
+const className = "bg-blue-950 outline outline-1 min-h-[60vh]";
 function left() {
   return <h1 className={className}>hewo world</h1>;
 }

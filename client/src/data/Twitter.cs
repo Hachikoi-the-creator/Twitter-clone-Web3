@@ -39,43 +39,14 @@ contract Twitter {
         owner = msg.sender;
     }
 
-    // only text
-    function postTextTweet(string memory _message) external {
-        uint currIndex = addressToTweetId[msg.sender].current();
-        addressToTweetId[msg.sender].increment();
-        addressToTweets[msg.sender][currIndex] = Tweet({
-            message: _message,
-            imageUrl: ""
-        });
-
-        emit TweetCreated({
-            tweeter: msg.sender,
-            tweetMsg: _message,
-            tweetImg: "no-img"
-        });
-    }
-
-    // only image
-    function postImageTweet(string memory _imageUrl) external {
-        uint currIndex = addressToTweetId[msg.sender].current();
-        addressToTweetId[msg.sender].increment();
-        addressToTweets[msg.sender][currIndex] = Tweet({
-            message: "",
-            imageUrl: _imageUrl
-        });
-
-        emit TweetCreated({
-            tweeter: msg.sender,
-            tweetMsg: "no-msg",
-            tweetImg: _imageUrl
-        });
-    }
-
-    // text & image
-    function postHybridTweet(
+    function postTweet(
         string memory _message,
         string memory _imageUrl
     ) external {
+        bool validTweet = bytes(_message).length > 0 ||
+            bytes(_imageUrl).length > 0;
+        require(validTweet, "tweet must either have a message or imageUrl");
+
         uint currIndex = addressToTweetId[msg.sender].current();
         addressToTweetId[msg.sender].increment();
         addressToTweets[msg.sender][currIndex] = Tweet({
@@ -98,9 +69,10 @@ contract Twitter {
 
     // * Contract migration of data available in https://mumbai.polygonscan.com/address/0x4B0a24db3a6e5F5247a7868C02230f8F1ba0c9D1
     function migrateData(address oldTwitterAdx) external OnlyOwner {
-        // I personally know there's only 2 tweets, so...
         OldTwitter oldTwitterInstance = OldTwitter(oldTwitterAdx);
 
+        // I personally know there's only 2 tweets, so...
+        // id 0 & id 1
         for (uint8 i = 0; i < 2; i++) {
             // get tweet data
             (

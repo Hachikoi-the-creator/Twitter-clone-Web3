@@ -1,6 +1,6 @@
 import abiJson from "./abi.json";
 
-export const contractAdx = "0x8F32f0758cd4a8A95a487aF696f8130cEE083C43";
+export const contractAdx = "0x90B1bde838e9C1729F0fe72375b91b93Bdb4AeC1";
 export const abi = abiJson;
 const oldContractAdx = "0x4B0a24db3a6e5F5247a7868C02230f8F1ba0c9D1";
 
